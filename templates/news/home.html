@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - News Portal{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-4">
+    <!-- Hero Section -->
+    {% if featured_articles %}
+    <section class="hero-section mb-5">
+        <h2 class="section-title">Featured Stories</h2>
+        <div class="row">
+            {% for article in featured_articles %}
+            <div class="col-md-4 mb-4">
+                <div class="card featured-card h-100">
+                    {% if article.featured_image %}
+                    <img src="{{ article.featured_image.url }}" class="card-img-top" alt="{{ article.title }}">
+                    {% else %}
+                    <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-white-50"></i>
+                    </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <span class="badge bg-primary mb-2">{{ article.category.name }}</span>
+                        <h5 class="card-title">
+                            <a href="{{ article.get_absolute_url }}" class="stretched-link text-decoration-none">
+                                {{ article.title }}
+                            </a>
+                        </h5>
+                        <p class="card-text">{{ article.excerpt }}</p>
+                        <small class="text-muted">
+                            <i class="fas fa-user me-1"></i>{{ article.author.username }}
+                            <i class="fas fa-calendar ms-3 me-1"></i>{{ article.created_at|date:"M d, Y" }}
+                        </small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <div class="row">
+        <!-- Latest News -->
+        <div class="col-lg-8">
+            <section class="latest-news">
+                <h2 class="section-title">Latest News</h2>
+                <div class="row">
+                    {% for article in latest_articles %}
+                    <div class="col-md-6 mb-4">
+                        <div class="card news-card h-100">
+                            {% if article.featured_image %}
+                            <img src="{{ article.featured_image.url }}" class="card-img-top" alt="{{ article.title }}">
+                            {% else %}
+                            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 180px;">
+                                <i class="fas fa-newspaper fa-2x text-muted"></i>
+                            </div>
+                            {% endif %}
+                            <div class="card-body">
+                                <span class="badge bg-secondary mb-2">{{ article.category.name }}</span>
+                                <h5 class="card-title">
+                                    <a href="{{ article.get_absolute_url }}" class="stretched-link text-decoration-none">
+                                        {{ article.title|truncatechars:60 }}
+                                    </a>
+                                </h5>
+                                <p class="card-text">{{ article.excerpt|truncatechars:100 }}</p>
+                                <small class="text-muted">
+                                    {{ article.created_at|date:"M d, Y" }}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="col-12">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            No articles available at the moment.
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <div class="sidebar">
+                <!-- Categories -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-tags me-2"></i>Categories</h5>
+                    </div>
+                    <div class="card-body">
+                        {% for category in categories %}
+                        <a href="{{ category.get_absolute_url }}" class="btn btn-outline-primary btn-sm me-2 mb-2">
+                            {{ category.name }}
+                        </a>
+                        {% empty %}
+                        <p class="text-muted">No categories available.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Newsletter Signup -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-envelope me-2"></i>Newsletter</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Stay updated with our latest news!</p>
+                        <form>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Your email address">
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

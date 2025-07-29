@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us - News Portal{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-4">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="about-content">
+                <h1 class="mb-4"><i class="fas fa-info-circle me-2"></i>About News Portal</h1>
+                
+                <div class="hero-section mb-5">
+                    <div class="bg-primary text-white p-4 rounded">
+                        <h2>Your Trusted Source for News</h2>
+                        <p class="lead mb-0">Delivering accurate, timely, and comprehensive news coverage to keep you informed about what matters most.</p>
+                    </div>
+                </div>
+
+                <div class="row mb-5">
+                    <div class="col-md-6">
+                        <h3><i class="fas fa-bullseye me-2 text-primary"></i>Our Mission</h3>
+                        <p>To provide reliable, unbiased, and comprehensive news coverage that empowers our readers to make informed decisions and stay connected with the world around them.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h3><i class="fas fa-eye me-2 text-primary"></i>Our Vision</h3>
+                        <p>To become the leading digital news platform that sets the standard for journalistic excellence, innovation, and community engagement in the digital age.</p>
+                    </div>
+                </div>
+
+                <div class="values-section mb-5">
+                    <h3><i class="fas fa-heart me-2 text-primary"></i>Our Values</h3>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="card border-0 text-center">
+                                <div class="card-body">
+                                    <i class="fas fa-shield-alt fa-2x text-primary mb-3"></i>
+                                    <h5>Integrity</h5>
+                                    <p>We uphold the highest standards of honesty and transparency in our reporting.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card border-0 text-center">
+                                <div class="card-body">
+                                    <i class="fas fa-balance-scale fa-2x text-primary mb-3"></i>
+                                    <h5>Accuracy</h5>
+                                    <p>We are committed to factual reporting and correcting errors promptly when they occur.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card border-0 text-center">
+                                <div class="card-body">
+                                    <i class="fas fa-users fa-2x text-primary mb-3"></i>
+                                    <h5>Community</h5>
+                                    <p>We serve our readers and the communities we cover with respect and dedication.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-section mb-5">
+                    <h3><i class="fas fa-users me-2 text-primary"></i>Our Team</h3>
+                    <p>Our diverse team of experienced journalists, editors, and digital media specialists work around the clock to bring you the latest news and analysis. We combine traditional journalistic principles with modern digital storytelling techniques.</p>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Editorial Standards</h5>
+                            <ul>
+                                <li>Fact-checking and verification</li>
+                                <li>Multiple source confirmation</li>
+                                <li>Editorial independence</li>
+                                <li>Ethical reporting practices</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Coverage Areas</h5>
+                            <ul>
+                                <li>Local and international news</li>
+                                <li>Politics and government</li>
+                                <li>Business and economy</li>
+                                <li>Technology and science</li>
+                                <li>Sports and entertainment</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-cta text-center">
+                    <h4>Get in Touch</h4>
+                    <p>Have questions, story tips, or feedback? We'd love to hear from you.</p>
+                    <a href="{% url 'news:contact' %}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-envelope me-2"></i>Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
